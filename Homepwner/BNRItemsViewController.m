@@ -22,7 +22,7 @@
     if (self) {
         
         // create 5 itemes and put them in the store
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 15; i++) {
             [[BNRItemStore sharedStore] createItem];
         }
     }
@@ -56,7 +56,7 @@
     if (section == 0) {
         numberOFRowInSection = [expensive count];
     } else {
-        numberOFRowInSection = [cheap count];
+        numberOFRowInSection = [cheap count] + 1;
     }
     
     return numberOFRowInSection;
@@ -70,11 +70,9 @@
     
     // get expensive items
     NSArray *expensive = BNRItemStore.sharedStore.allItems[0];
-    NSLog(@"expensive: %@",expensive);
     
     // get cheap items
     NSArray *cheap = BNRItemStore.sharedStore.allItems[1];
-    NSLog(@"cheap: %@",cheap);
     
     // create the current item
     BNRItem *item;
@@ -83,6 +81,12 @@
     if (indexPath.section == 0) {
         item = expensive[indexPath.row];
     } else if (indexPath.section == 1) {
+        
+        if (indexPath.row == cheap.count) {
+            cell.textLabel.text = @"No more Items";
+            return cell;
+        }
+        
         item = cheap[indexPath.row];
     }
     
