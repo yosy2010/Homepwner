@@ -37,6 +37,16 @@
     return [self init];
 }
 
+- (void)viewDidLoad
+{
+    // call super view did load
+    [super viewDidLoad];
+    
+    // set the table view identifier to be reused
+    [self.tableView registerClass:[UITableViewCell class]
+           forCellReuseIdentifier:@"UITableViewCell"];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //    BNRItemStore *store = [BNRItemStore sharedStore];
@@ -49,9 +59,8 @@
 // return a cell and the parameter give an index of the currnet item in the data array
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // create a cell
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                   reuseIdentifier:@"UITableViewCell"];
+    // create a cell or reuse one that is ready
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     
     // get all the items
     NSArray *items = [[BNRItemStore sharedStore] allItems];

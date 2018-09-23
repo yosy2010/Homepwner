@@ -25,8 +25,8 @@
 // initilizers:
 // designated initilizer:
 -(instancetype) initWithItemName: (NSString *) itemName
-          valueInDollars: (int) valueInDollars
-            serilaNumber: (NSString *) serialNumber;
+                  valueInDollars: (int) valueInDollars
+                    serilaNumber: (NSString *) serialNumber;
 // another initilizer:
 -(instancetype) initWithItemName: (NSString *) itemName;
 // and another:
