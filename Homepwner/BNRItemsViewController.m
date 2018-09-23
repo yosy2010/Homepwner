@@ -49,11 +49,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    BNRItemStore *store = [BNRItemStore sharedStore];
-//    NSArray *items = store.allItems;
-//    return items.count;
-    // above is the same as:
-    return [[[BNRItemStore sharedStore] allItems] count];
+    NSArray *allItems = BNRItemStore.sharedStore.allItems;
+    NSArray *expensive = allItems[0];
+    NSArray *cheap = allItems[1];
+    NSInteger numberOFRowInSection = 0;
+    if (section == 0) {
+        numberOFRowInSection = [expensive count];
+    } else {
+        numberOFRowInSection = [cheap count];
+    }
+    
+    return numberOFRowInSection;
 }
 
 // return a cell and the parameter give an index of the currnet item in the data array
@@ -62,12 +68,25 @@
     // create a cell or reuse one that is ready
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     
-    // get all the items
-    NSArray *items = [[BNRItemStore sharedStore] allItems];
+    // get expensive items
+    NSArray *expensive = BNRItemStore.sharedStore.allItems[0];
+    NSLog(@"expensive: %@",expensive);
+    
+    // get cheap items
+    NSArray *cheap = BNRItemStore.sharedStore.allItems[1];
+    NSLog(@"cheap: %@",cheap);
+    
+    // create the current item
+    BNRItem *item;
     
     // get the current item
-    BNRItem *item = items[indexPath.row];
+    if (indexPath.section == 0) {
+        item = expensive[indexPath.row];
+    } else if (indexPath.section == 1) {
+        item = cheap[indexPath.row];
+    }
     
+
     // set the description of the item to the cell textLabel
     cell.textLabel.text = item.description;
     
@@ -75,5 +94,21 @@
     return cell;
 }
 
+// set the number of section in the tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
 
+// set the title for each sectoin
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionHeader = @"- $50";
+    
+    if (section == 0) {
+        sectionHeader = @"+ $50";
+    }
+    
+    return sectionHeader;
+}
 @end

@@ -11,7 +11,8 @@
 
 @interface BNRItemStore ()
 
-@property (nonatomic) NSMutableArray *privateItems; // this is private because we don't want other object to change any thing except through our methods
+@property (nonatomic) NSMutableArray *privatExpensiveItems; // this is private because we don't want other object to change any thing except through our methods
+@property (nonatomic) NSMutableArray *privateCheapItems;
 
 @end
 
@@ -50,8 +51,9 @@
     
     // no error in creating the store?
     if (self) {
-        // create the array that will hold the items internally
-        _privateItems = [[NSMutableArray alloc] init];
+        // create the two arrays that will hold the items internally
+        _privatExpensiveItems = [[NSMutableArray alloc] init];
+        _privateCheapItems = [[NSMutableArray alloc]init];
     }
     
     return self;
@@ -60,14 +62,19 @@
 // since NSMutableArray is a sub class of NSArray then we can return our mutable array as an inmutable one
 - (NSArray *)allItems
 {
-    return self.privateItems;
+    return @[self.privatExpensiveItems, self.privateCheapItems];
 }
 
 // this will call the random item initializer in bnr item and create an item and store it in the store
 - (BNRItem *)createItem
 {
     BNRItem *item = [BNRItem randomItem];
-    [self.privateItems addObject:item];
+    
+    if (item.valueInDollars > 50) {
+        [self.privatExpensiveItems addObject:item];
+    } else {
+        [self.privateCheapItems addObject:item];
+    }
     
     return item;
 }

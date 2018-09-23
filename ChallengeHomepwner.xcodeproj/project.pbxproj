@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3BFE33622155E7B70009267D /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BFE33622155E7B70009267D /* ChallengeHomepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChallengeHomepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFE33652155E7B70009267D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3BFE33662155E7B70009267D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3BFE33682155E7B80009267D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		3BFE33632155E7B70009267D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3BFE33622155E7B70009267D /* Homepwner.app */,
+				3BFE33622155E7B70009267D /* ChallengeHomepwner.app */,
 			);
 			name = Products;
 			path = ..;
@@ -85,9 +85,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3BFE33612155E7B70009267D /* Homepwner */ = {
+		3BFE33612155E7B70009267D /* ChallengeHomepwner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3BFE33722155E7B80009267D /* Build configuration list for PBXNativeTarget "Homepwner" */;
+			buildConfigurationList = 3BFE33722155E7B80009267D /* Build configuration list for PBXNativeTarget "ChallengeHomepwner" */;
 			buildPhases = (
 				3BFE335E2155E7B70009267D /* Sources */,
 				3BFE335F2155E7B70009267D /* Frameworks */,
@@ -97,9 +97,9 @@
 			);
 			dependencies = (
 			);
-			name = Homepwner;
+			name = ChallengeHomepwner;
 			productName = Homepwner;
-			productReference = 3BFE33622155E7B70009267D /* Homepwner.app */;
+			productReference = 3BFE33622155E7B70009267D /* ChallengeHomepwner.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -116,7 +116,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3BFE335D2155E7B70009267D /* Build configuration list for PBXProject "Homepwner" */;
+			buildConfigurationList = 3BFE335D2155E7B70009267D /* Build configuration list for PBXProject "ChallengeHomepwner" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -129,7 +129,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3BFE33612155E7B70009267D /* Homepwner */,
+				3BFE33612155E7B70009267D /* ChallengeHomepwner */,
 			);
 		};
 /* End PBXProject section */
@@ -297,7 +297,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yasser.Homepwner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yasser.ChallengeHomepwner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -314,7 +314,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yasser.Homepwner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yasser.ChallengeHomepwner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -323,7 +323,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3BFE335D2155E7B70009267D /* Build configuration list for PBXProject "Homepwner" */ = {
+		3BFE335D2155E7B70009267D /* Build configuration list for PBXProject "ChallengeHomepwner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3BFE33702155E7B80009267D /* Debug */,
@@ -332,7 +332,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3BFE33722155E7B80009267D /* Build configuration list for PBXNativeTarget "Homepwner" */ = {
+		3BFE33722155E7B80009267D /* Build configuration list for PBXNativeTarget "ChallengeHomepwner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3BFE33732155E7B80009267D /* Debug */,
