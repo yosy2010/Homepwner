@@ -11,15 +11,23 @@
 #import "BNRItem.h"
 
 
+
 @implementation BNRItemsViewController
 
-// override init to make the style of the label laways plain
+// override init to make the style of the label laways grouped and to change the bg image of the table
 - (instancetype)init
 {
     // call the designated initilizer
-    self = [super initWithStyle:UITableViewStylePlain];
+    self = [super initWithStyle:UITableViewStyleGrouped];
     
     if (self) {
+        
+        // put a UIImage to the background of the table
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg2"]];
+        imageView.frame = self.tableView.frame;
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        self.tableView.backgroundView = imageView;
+        
         
         // create 5 itemes and put them in the store
         for (int i = 0; i < 15; i++) {
@@ -37,6 +45,9 @@
     return [self init];
 }
 
+
+
+// what do you want to do ater the view loads
 - (void)viewDidLoad
 {
     // call super view did load
@@ -47,6 +58,36 @@
            forCellReuseIdentifier:@"UITableViewCell"];
 }
 
+// set the number of section in the tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+// set the title for each sectoin
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionHeader = @"- $50";
+    
+    if (section == 0) {
+        sectionHeader = @"+ $50";
+        
+    }
+    
+    return sectionHeader;
+}
+
+
+// change the size of the font and the text alignment for the header
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *) view;
+    header.textLabel.font = [UIFont boldSystemFontOfSize:24];
+    
+    header.textLabel.textAlignment = NSTextAlignmentCenter;
+}
+
+// set how many rows in each section
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSArray *allItems = BNRItemStore.sharedStore.allItems;
@@ -60,6 +101,18 @@
     }
     
     return numberOFRowInSection;
+}
+
+// set the height of rwos
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1) {
+        if (indexPath.row == [BNRItemStore.sharedStore.allItems[1] count]) {
+            return 44;
+        }
+    }
+    
+    return 60;
 }
 
 // return a cell and the parameter give an index of the currnet item in the data array
@@ -84,6 +137,7 @@
         
         if (indexPath.row == cheap.count) {
             cell.textLabel.text = @"No more Items";
+            cell.textLabel.font = [UIFont systemFontOfSize:17];
             return cell;
         }
         
@@ -94,25 +148,16 @@
     // set the description of the item to the cell textLabel
     cell.textLabel.text = item.description;
     
+    // change font size to 20
+    cell.textLabel.font = [UIFont systemFontOfSize:20];
     // return the cell
     return cell;
 }
 
-// set the number of section in the tableView
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+// to tweak the cell, Here we will make the cells transparent so we can see the image
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 2;
+    cell.backgroundColor = UIColor.clearColor;
 }
 
-// set the title for each sectoin
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString *sectionHeader = @"- $50";
-    
-    if (section == 0) {
-        sectionHeader = @"+ $50";
-    }
-    
-    return sectionHeader;
-}
 @end
